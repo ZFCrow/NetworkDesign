@@ -1,0 +1,189 @@
+Building configuration...
+
+Current configuration : 4151 bytes
+!
+! Last configuration change at 21:59:51 UTC Thu Jul 3 2008
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname A1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+switch 1 provision ws-c2960x-24ts-l
+!
+!
+no ip domain-lookup
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3746579456
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3746579456
+ revocation-check none
+ rsakeypair TP-self-signed-3746579456
+!
+!
+crypto pki certificate chain TP-self-signed-3746579456
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33373436 35373934 3536301E 170D3038 30373033 32313539 
+  35315A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 37343635 
+  37393435 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  81009B2D 5362F226 C0BC25EE 11CBA246 F530FC11 E7BBA0FA B038C805 E2638EA6 
+  99BE7689 D1C1DB0E 2F92B8AA A15D364E 267BFD4D ED011662 88BBA0BE D6223E9F 
+  232B39B8 A4D71FCF 7341A4F3 9EC4E8A1 877EEC99 D8FAD9D8 FF8ED6FA B00AEC58 
+  DF752EBF 0D6C68F8 FB5CF973 4AC9FE0D 230B16E0 A8FBA6E1 C767FF90 85E3415F 
+  66590203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14118313 262CB94F 78D43015 D5F23C6E C5EC11C8 F2301D06 
+  03551D0E 04160414 11831326 2CB94F78 D43015D5 F23C6EC5 EC11C8F2 300D0609 
+  2A864886 F70D0101 05050003 81810074 0B5D5E88 E34BBC1D C570DC5F 0CE2CBE1 
+  5BAEC917 A6F49F75 0C749843 AEB3C532 654D8DA4 7406B0D3 C7772269 C10CFFFA 
+  7D3A9ED7 B22F37E1 DCD76F6B FA95C681 99F5FB8B 7C7B399E E330255C 270A60E4 
+  44E10409 2636AC5A 7592F067 14F2954D F1D9CD40 A08C6AC9 9FC734AA F7228866 
+  0F401921 731085BE BCC5EBC1 FA8672
+  	quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+!
+interface GigabitEthernet1/0/1
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 20
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 20
+ switchport mode access
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 30
+ switchport mode access
+!
+interface GigabitEthernet1/0/21
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/0/25
+!
+interface GigabitEthernet1/0/26
+!
+interface GigabitEthernet1/0/27
+!
+interface GigabitEthernet1/0/28
+!
+interface Vlan1
+!
+ip http server
+ip http secure-server
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

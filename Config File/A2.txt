@@ -1,0 +1,182 @@
+Building configuration...
+
+Current configuration : 3969 bytes
+!
+! Last configuration change at 13:00:43 UTC Sun Jan 2 2000
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname A2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+switch 1 provision ws-c2960x-24ts-l
+!
+!
+no ip domain-lookup
+!
+!
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3741699456
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3741699456
+ revocation-check none
+ rsakeypair TP-self-signed-3741699456
+!
+!
+crypto pki certificate chain TP-self-signed-3741699456
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33373431 36393934 3536301E 170D3030 30313032 31333030 
+  34335A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 37343136 
+  39393435 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100894A A93F9E10 B0EA9C40 4DA29FB7 CBE8655D 27A4B2C7 FA6DC080 BBACC732 
+  D54F624D 65C41AD1 FECC9288 722FC48D 2E2F76E2 9B5571BB 8152CB39 ABA0BF94 
+  A1EB82B7 AB8A95BE 3312FBD9 E8735E22 32DC76AA B271DB3E EB850CA6 F0A642A1 
+  25271B67 2CA49BE9 12C51D74 6B3FF94F 0DF2ECEB 523CF737 E38C95B3 AE1660B8 
+  16D50203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14464C83 D673DE32 0CD60608 1BC590C4 08000757 D6301D06 
+  03551D0E 04160414 464C83D6 73DE320C D606081B C590C408 000757D6 300D0609 
+  2A864886 F70D0101 05050003 81810072 5CDB4F71 223E34CB 41C77F51 57A0E340 
+  D64658DE A0DC2310 E0A68DE4 384AB77E 1C5DBD8D F137DAEA DBE411FF 1A39F185 
+  13633560 9381ABA5 28173F7B 56683D87 E90924F7 87623847 93BC834D 4AB4DFD6 
+  7EDC493E EDCA6265 ACC7AC6C 76DAE2F6 E1E90350 A26BD70B A9ED956F 3AA2C2EE 
+  0E96946C 9B2706C0 4128426D C0BA63
+  	quit
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+!
+interface GigabitEthernet1/0/1
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/2
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 10
+ switchport mode access
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 40
+ switchport mode access
+!
+interface GigabitEthernet1/0/18
+!
+interface GigabitEthernet1/0/19
+!
+interface GigabitEthernet1/0/20
+!
+interface GigabitEthernet1/0/21
+!
+interface GigabitEthernet1/0/22
+!
+interface GigabitEthernet1/0/23
+!
+interface GigabitEthernet1/0/24
+!
+interface GigabitEthernet1/0/25
+!
+interface GigabitEthernet1/0/26
+!
+interface GigabitEthernet1/0/27
+!
+interface GigabitEthernet1/0/28
+!
+interface Vlan1
+!
+ip http server
+ip http secure-server
+!
+!
+!
+!
+!
+line con 0
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+end

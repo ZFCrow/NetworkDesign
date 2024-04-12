@@ -1,0 +1,181 @@
+Building configuration...
+
+Current configuration : 4044 bytes
+!
+! Last configuration change at 09:51:16 UTC Fri Mar 8 2024
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+multilink bundle-name authenticated
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-1344345411
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1344345411
+ revocation-check none
+ rsakeypair TP-self-signed-1344345411
+!
+!
+crypto pki certificate chain TP-self-signed-1344345411
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31333434 33343534 3131301E 170D3234 30333038 30383234 
+  34355A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 33343433 
+  34353431 31308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 01009BA8 F3A18CB5 C797027A B165DE65 7EA3CBF2 AF5A3A21 CD08B14F 
+  8E513942 59C1B08A 26158D15 DB54FD4A 70982C14 B50D4357 7F4280C9 F723F428 
+  E52C7060 4B7CCD8C 72913442 214647A4 C1587303 764FB6D2 9D201F6F A5571CC4 
+  6D48B2CA 30BD62E5 F07D882A 30DE3C52 E408AEF3 560B936A D2092C86 55224291 
+  EB2EC67C D939818F 32DA2E05 CF527D5C CD4C4BAB BC1B9FD9 61F0F2E1 EB82E56A 
+  93B67931 06D6020A 56E47C10 2C1AA8DB 13A2079A C98E8CB5 6B1D8F88 D8E99F37 
+  D0AD380D F17AE799 9B008F86 8DFE4671 DBB657C7 2FD5ACB3 A64B708E F8D84FA5 
+  D6B2FD83 369E3646 DF8FC829 ACB4E722 0C0CF8CB 376C9710 83D1041E 7AEA9C30 
+  07BE033B 2B6B0203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 1468E63B 440721CB 27E4B1EF 046A1C55 AC682655 
+  B3301D06 03551D0E 04160414 68E63B44 0721CB27 E4B1EF04 6A1C55AC 682655B3 
+  300D0609 2A864886 F70D0101 05050003 82010100 3E915BA1 F477B3B1 5FC31453 
+  F996ABA8 FBB4CE64 F8E612E2 5D653FA2 1E261061 40C8CE30 31957786 D96F53DE 
+  9359A193 C56AB4F5 C15F27A7 AEE7D6B8 14E68F3B D277B807 5B35B9FB B256FA95 
+  1F86C393 0BE3BF16 59FD4094 24C84159 F6313968 F7E4AEA7 2CACFDC5 11ACBD50 
+  814D363E A68F54F4 C4716C67 EE0BE6BF C13F1DAE A3BC8DB8 967E0A7E 8EEC184C 
+  E3A8D95F DA11FDFC 4FEFB02F 0F94C2D4 13B130A5 06A30C0D FA8CFC25 DFD15589 
+  C5256BB7 57EEF465 20AE668F 4583436A 5C691B1F 727FF7A3 1237C373 DEF4A0DD 
+  20853ADB E4E9AE49 D7005AE2 49A75F27 A898AE38 C192E868 26BDCF85 90FE2A4E 
+  0B04A123 71509840 2FE4BF55 D9469C0E BB915E56
+  	quit
+!
+license udi pid ISR4321/K9 sn FDO23440Q4K
+license boot level appxk9
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+!
+!
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0
+ ip address 172.27.46.41 255.255.255.252
+ ip nat outside
+ negotiation auto
+ no shut
+!
+interface GigabitEthernet0/0/1
+ ip address 10.1.1.121 255.255.255.252
+ ip nat inside
+ negotiation auto
+ ip ospf cost 2
+ no shut
+!
+interface GigabitEthernet0/1/0
+ ip address 10.1.1.125 255.255.255.252
+ ip nat inside
+ negotiation auto
+ no shut
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+router ospf 1
+ network 10.1.1.120 0.0.0.3 area 0
+ network 10.1.1.124 0.0.0.3 area 0
+ default-information originate
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip tftp source-interface GigabitEthernet0
+ip nat pool ISP2-POOL 118.189.139.80 118.189.139.87 netmask 255.255.255.248
+ip nat inside source list 1 pool ISP2-POOL overload
+ip route 0.0.0.0 0.0.0.0 172.27.46.42
+!
+!
+access-list 1 permit 10.1.1.0 0.0.0.127
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ transport input none
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+!
+!
+!
+!
+end
