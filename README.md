@@ -14,14 +14,7 @@ department of the company has mandated the use of IP address block 10.1.1.0/25 f
 branch office.
 # Internet Access
 The company has subscribed to 2 x ISPs to achieve better reliability to Internet access.
-To implement connections to ISPs for Internet access, open up the removable floorboard
-covering nearest to the network rack that your team is working on. Look out for Ethernet ports
-marked NL1-BSxx or NL2-BSxx, where xx ranges from 1 to 56, and connect them to your
-network devices using the 5m light-blue Ethernet cables. (Note: Most racks may already have
-one cable connected for you.)
 
-The odd-number ports of NL1-BSxx and NL2-BSxx are for connection to ISP1 whereas the even number
-ports are for connection to ISP2.
 For connection to ISP1, the ISP1 has allocated the IP address 172.27.47.4(x – 1)+1/30 for your
 network device to connect to it, where x ranges from 1 to 20 corresponding to your rack
 number; e.g. rack 1 will be 4(1 – 1)+1 = 1, i.e. 172.27.47.1, and so on.
